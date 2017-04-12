@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class MyListManager
+    public class MyListManager
     {
+        public MyList<Guitar> guitarList;
+        public MyListManager()
+        {
+            guitarList = new MyList<Guitar>();
+        }
         public void MainMenu()
         {
             Console.WriteLine("Welcome to myListManager!");

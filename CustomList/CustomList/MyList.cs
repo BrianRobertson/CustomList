@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class MyList
+    public class MyList<T>
     {
+        //template for MyList.
+        T[] myArray = new T[0];
+
+
+
 
     }
 }

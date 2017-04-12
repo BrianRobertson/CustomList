@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Guitar.cs" />
     <Compile Include="MyList.cs" />
     <Compile Include="MyListManager.cs" />
     <Compile Include="Program.cs" />
