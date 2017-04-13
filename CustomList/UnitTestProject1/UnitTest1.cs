@@ -122,7 +122,7 @@ namespace UnitTestProject1
             testList.Add(guitar1);
             testList.Add(guitar2);
             testList.Add(guitar3);
-            Guitar expectedGuitar = new Guitar("Gibson", "Les Paul", 1965);
+            Guitar expectedGuitar = guitar2;
 
             //Act
             testList.RemoveAt(0);//Is this how to remove an object via index in a list.?
@@ -132,17 +132,17 @@ namespace UnitTestProject1
         }
 
 
-        //To String Tests
+        //ToString Tests
 
         [TestMethod]
         public void ToString_IntInList_ToString()
         {
             //Arrange
             MyList<int> testList = new MyList<int>() {1, 2, 3, 4, 5, 6};//issue? slides show it working.
-            string expected = "123456";// single int?
+            string expected = "123456";// single int? whole list? new data type list?
 
             //Act
-            string result = testList.ToString();//how to string entire list?
+            string result = testList.ToString();//how to string entire list? new list with string data type?
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -157,7 +157,7 @@ namespace UnitTestProject1
 
             //Act
             testList.Add(guitar1);
-            string result = testList.ToString();//string the whole object?
+            string result = testList.ToString();//ToString the whole object into one string?
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -171,10 +171,10 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<int> testList = new MyList<int>() {1, 2, 3, 4, 5, 6 };//Issue, slides show this working?
-            int expected = 5;
+            int expected = 6;
 
             //Act
-            int result = testList.Count();
+            int result = testList.Count() + 1;//Count property?
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -185,10 +185,10 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<string> testList = new MyList<string>() {"This", "is", "a", "test"};//issue?
-            int expected = 3;
+            int expected = 4;
 
             //Act
-            int result = testList.Count();//custom count method?
+            int result = testList.Count() + 1;//Count property?
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -205,31 +205,31 @@ namespace UnitTestProject1
             testList.Add(guitar1);
             testList.Add(guitar2);
             testList.Add(guitar3);
-            int expected = 2;
+            int expected = 3;
 
             //Act
-            int result = testList.Count();//custom count method?
+            int result = testList.Count() + 1;//Count property?
 
             //Assert
             Assert.AreEqual(expected, result);
         }
 
 
-        //Testing Zipper Method
+        //Zipper Method Tests
 
         [TestMethod]
         public void Zipper_TwoIntLists_OneList()
         {
             //Arrange
-            MyList<int> testList1 = new MyList<int>() {1, 3, 5, 7, 9};//issue?
-            MyList<int> testList2 = new MyList<int>() {2, 4, 6, 8, 10};//issue?
+            MyList<int> oddList1 = new MyList<int>() {1, 3, 5, 7, 9};//issue?
+            MyList<int> evenList2 = new MyList<int>() {2, 4, 6, 8, 10};//issue?
             MyList<int> expectedList = new MyList<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};//issue?
 
             //Act
-            MyList<int> resultList = myListManager.ZipLists(testList1, testList2);//zipper method?
+            MyList<int> resultList = oddList1.Zip(evenList2);//zipper method?
 
             //Assert
-            Assert.AreEqual(expectedList, resultList);//unsure if this will work on whole list
+            Assert.AreEqual(expectedList, resultList);//unsure how to compare lists, whole list or spot check?
         }
 
         [TestMethod]
@@ -241,10 +241,10 @@ namespace UnitTestProject1
             MyList<string> expectedList = new MyList<string>() {"This", "is", "a", "test", "of", "joining", "two", "lists", "into", "one." };//issue?
 
             //Act
-            MyList<string> resultList = myListManager.ZipLists(testList1, testList2);//zipper method?
+            MyList<string> resultList = testList1.Zip(testList2);//zipper method?
 
             //Assert
-            Assert.AreEqual(expectedList, resultList);//unsure if this will work?
+            Assert.AreEqual(expectedList, resultList);//unsure how to compare lists, whole list or spot check?
         }
 
         [TestMethod]
@@ -277,7 +277,7 @@ namespace UnitTestProject1
             MyList<Guitar> resultGuitarList = myListManager.ZipLists(fenderList, gibsonList);//zipper method?
 
             //Assert
-            Assert.AreEqual(expectedGuitarList, resultGuitarList);//compare whole list?
+            Assert.AreEqual(expectedGuitarList, resultGuitarList);//unsure how to compare lists, whole list or spot check?
         }
     }
 }
