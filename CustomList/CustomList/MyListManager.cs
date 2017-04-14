@@ -8,18 +8,31 @@ namespace CustomList
 {
     public class MyListManager
     {
-        public MyList<Guitar> guitarList;
+        //Member Variables
+
+        //Constructor
         public MyListManager()
         {
-            guitarList = new MyList<Guitar>();
+
         }
         public void MainMenu()
         {
             Console.WriteLine("Welcome to myListManager!");
+            ManageMyList();
         }
         public void ManageMyList()
         {
-            //do stuff.
+            MyList<int> list = new MyList<int>();
+            list.Add(9);
+
+
+
+//            List<int> testList = new List<int>() { 1, 2, 3, 4, 5};
+
+
+
+
+
         }
     }
 }

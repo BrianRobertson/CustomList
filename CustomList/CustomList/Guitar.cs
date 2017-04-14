@@ -15,7 +15,7 @@ namespace CustomList
         {
             this.make = "Brand";
             this.model = "Style";
-            this.year = 1900;
+            this.year = 0000;
         }
     }
 }
