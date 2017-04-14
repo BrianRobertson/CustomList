@@ -15,8 +15,8 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<int> testList = new MyList<int>();
-            int testNumber = 1;
-            int expected = 1;
+            int testNumber = 9;
+            int expected = 9;
 
             //Act
             testList.Add(testNumber);
@@ -29,13 +29,13 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<string> testList = new MyList<string>();
-            string item = "Test string 1.";
+            string testItem = "Test string 1.";
 
             //Act
-            testList.Add(item);
+            testList.Add(testItem);
 
             //Assert
-            Assert.AreEqual(item, testList[0]);
+            Assert.AreEqual(testItem, testList[0]);
         }
         [TestMethod]
         public void Add_ObjectToList_Add1Object()
