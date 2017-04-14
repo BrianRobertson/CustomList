@@ -84,7 +84,7 @@ namespace CustomList
 
 
 
-        //Iterator.
+        //Iterator. Is this the function of the indexer? If so, check!
 
 
 
@@ -94,22 +94,36 @@ namespace CustomList
         //}
 
         //Overload Plus Operator.
-        //public static MyList<T> operator + (MyList<T> list1, MyList<T> list2)
-        //{
+        public static MyList<T> operator +(MyList<T> list1, MyList<T> list2)
+        {
+            //Needs logic.
+            MyList<T> combinedList = new MyList<T>();
 
+            if (list1.count != 0)
+            {
+                for (int i = 0; i < list1.count; i++)
+                    combinedList.Add(list1[i]);
+            }
+            if (list2.count != 0)
+            {
+                for (int i = 0; i < list2.count; i++)
+                    combinedList.Add(list2[i]);
+            }
+            return combinedList;
+        }
+
+        //Overload Minus Operator.
+        //public static MyList<T> operator -(MyList<T> list1, MyList<T> list2)
+        //{
+        //    //Needs logic.
         //}
 
-        ////Overload Minus Operator.
-        //public static MyList<T> operator - (MyList<T> list1, MyList<T> list2)
-        //{
-
-        //}
-
-        //public MyList<T> ZipWith(MyList<T> listToBeZippedIn)
-        //{
-        //    MyList<T> zippedList;
-        //    return zippedList;
-        //}
+        public MyList<T> ZipWith(MyList<T> listToBeZippedIn)
+        {
+            //needs logic.
+            MyList<T> zippedList = new MyList<T>();
+            return zippedList;
+        }
         public void Sort()
         {
             //bonus.

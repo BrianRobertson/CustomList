@@ -29,26 +29,26 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<string> testList = new MyList<string>();
-            string testItem = "Test string 1.";
+            string testString = "Test string 1.";
 
             //Act
-            testList.Add(testItem);
+            testList.Add(testString);
 
             //Assert
-            Assert.AreEqual(testItem, testList[0]);
+            Assert.AreEqual(testString, testList[0]);
         }
         [TestMethod]
         public void Add_ObjectToList_Add1Object()
         {
             //Arrange
             MyList<Guitar> testList = new MyList<Guitar>();
-            Guitar guitar = new Guitar("Fender", "Jaguar", 1964);
+            Guitar testGuitar = new Guitar("Fender", "Jaguar", 1964);
 
             //Act
-            testList.Add(guitar);
+            testList.Add(testGuitar);
 
             //Assert
-            Assert.AreEqual(guitar, testList[0]);
+            Assert.AreEqual(testGuitar, testList[0]);
         }
         [TestMethod]
         public void Add_MultipleIntToList_Add3Int()
@@ -86,13 +86,13 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<int> testList = new MyList<int>() {1, 2, 3, 4, 5};
-            int expected = 2;
+            int expected = 4;
 
             //Act
-            testList.Remove(1);//Removes item at index 0.
+            testList.Remove(3);//Removes matching item and remaining content shifts forward on list.
 
             //Assert
-            Assert.AreEqual(expected, testList[0]);//Content at index 0 after removing one item.
+            Assert.AreEqual(expected, testList[2]);//Content at index after removing one item.
         }
         [TestMethod]
         public void Remove_StringFromList_Remove1String()
@@ -106,10 +106,10 @@ namespace UnitTestProject1
             string expected = "Test string 2.";
 
             //Act
-            testList.Remove("Test string 1.");
+            testList.Remove("Test string 1.");//Removes matching item and remaining content shifts forward on list.
 
             //Assert
-            Assert.AreEqual(expected, testList[0]);//Content at index 0 after removing one item.
+            Assert.AreEqual(expected, testList[0]);//Content at index after removing one item.
         }
         [TestMethod]
         public void Remove_ObjectsFromList_Remove1Object()
@@ -122,13 +122,13 @@ namespace UnitTestProject1
             testList.Add(guitar1);
             testList.Add(guitar2);
             testList.Add(guitar3);
-            Guitar expectedGuitar = guitar2;
+            Guitar expectedGuitar = guitar3;
 
             //Act
-            testList.Remove[0];//Remove object at index 0 in the list.
+            testList.Remove(guitar2);//Removes matching item and remaining content shifts forward on list.
 
             //Assert
-            Assert.AreEqual(expectedGuitar, testList[0]);//Content at index 0 after removing one item.
+            Assert.AreEqual(expectedGuitar, testList[1]);//Content at index after removing one item.
         }
 
 
@@ -164,7 +164,33 @@ namespace UnitTestProject1
         }
 
 
-        //Counting Tests
+        //Plus Operator Tests
+        public void OperaterOverride_PlusSign_AddTwoListsTogether()
+        {
+            //Arrange
+            MyList<int> testList1 = new MyList<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+            MyList<int> testList2 = new MyList<int>() { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
+            int expected = 6;
+
+            //Act
+            MyList<int> resultList = (testList1 + testList2);
+
+            //Assert     
+            Assert.AreEqual(expected, resultList[15]);
+        }
+        //other similair test with different datatypes etc.
+
+
+
+
+
+
+
+
+
+
+
+        //Count Tests
 
         [TestMethod]
         public void Count_IntList_Match()
@@ -174,7 +200,7 @@ namespace UnitTestProject1
             int expected = 6;
 
             //Act
-            int result = testList.Count + 1;//Count property plus one.
+            int result = testList.Count;//Count property on this list.
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -188,7 +214,7 @@ namespace UnitTestProject1
             int expected = 4;
 
             //Act
-            int result = testList.Count + 1;//Count property plus one.
+            int result = testList.Count;//Count property on this list.
 
             //Assert
             Assert.AreEqual(expected, result);
@@ -208,7 +234,7 @@ namespace UnitTestProject1
             int expected = 3;
 
             //Act
-            int result = testList.Count + 1;//Count property plus one.
+            int result = testList.Count;//Count property on this list.
 
             //Assert
             Assert.AreEqual(expected, result);
