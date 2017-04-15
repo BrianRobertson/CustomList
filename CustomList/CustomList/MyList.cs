@@ -37,7 +37,7 @@ namespace CustomList
 
         public void Add(T item)
         {
-            if (count >= capacity)// the == operator should suffice, it will never be over.
+            if (count >= capacity)// the == operator should suffice, it should never be over.
             {
                 capacity += 4;//change varible of myArray.
                 T[] newArray = new T[capacity];//declare array size.
@@ -94,29 +94,70 @@ namespace CustomList
         //}
 
         //Overload Plus Operator.
-        public static MyList<T> operator +(MyList<T> list1, MyList<T> list2)
+        public static MyList<T> operator + (MyList<T> oneArray, MyList<T> twoArray)
         {
-            //Needs logic.
-            MyList<T> combinedList = new MyList<T>();
+            MyList<T> combinedArray = new MyList<T>();
 
-            if (list1.count != 0)
+            if (oneArray.count != 0)
             {
-                for (int i = 0; i < list1.count; i++)
-                    combinedList.Add(list1[i]);
+                for (int i = 0; i < oneArray.count; i++)
+                    combinedArray.Add(oneArray[i]);
             }
-            if (list2.count != 0)
+            if (twoArray.count != 0)
             {
-                for (int i = 0; i < list2.count; i++)
-                    combinedList.Add(list2[i]);
+                for (int i = 0; i < twoArray.count; i++)
+                    combinedArray.Add(twoArray[i]);
             }
-            return combinedList;
+            return combinedArray;
         }
 
         //Overload Minus Operator.
-        //public static MyList<T> operator -(MyList<T> list1, MyList<T> list2)
-        //{
-        //    //Needs logic.
-        //}
+        public static MyList<T> operator - (MyList<T> oneArray, MyList<T> twoArray)
+        {
+            MyList<T> resultingSubtractedArray = new MyList<T>();
+            MyList<T> valuesToRemoveArray = new MyList<T>();
+
+            if (twoArray.count != 0)
+            {
+                if (oneArray.count != 0)
+                {
+                    for (int i = 0; i < twoArray.count; i++)
+                    {
+                        for (int oneArrayIndex = 0; oneArrayIndex < oneArray.count; oneArrayIndex++)
+                        {
+                            if (twoArray[i].Equals(oneArray[oneArrayIndex]))
+                            {
+                                valuesToRemoveArray.Add(twoArray[i]);
+                                oneArrayIndex = oneArray.count;
+                            }
+                        }
+                    }
+                }
+            }
+            if (oneArray.count != 0 && valuesToRemoveArray.count != 0)
+            {
+                for (int i = 0; i < oneArray.count; i++)
+                {
+                    bool addThis = true;
+                    for (int j = 0; j < valuesToRemoveArray.count; j++)
+                    {
+                        if (oneArray[i].Equals(valuesToRemoveArray[j]))
+                        {
+                            addThis = false;
+                            j = valuesToRemoveArray.count;
+                        }
+                    }
+                    if (addThis)
+                        resultingSubtractedArray.Add(oneArray[i]);
+                }
+            }
+            else if (oneArray.count != 0 && valuesToRemoveArray.count == 0)
+            {
+                for (int i = 0; i < oneArray.count; i++)
+                    resultingSubtractedArray.Add(oneArray[i]);
+            }
+            return resultingSubtractedArray;
+        }
 
         public MyList<T> ZipWith(MyList<T> listToBeZippedIn)
         {

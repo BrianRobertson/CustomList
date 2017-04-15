@@ -164,8 +164,9 @@ namespace UnitTestProject1
         }
 
 
-        //Plus Operator Tests
-        public void OperaterOverride_PlusSign_AddTwoListsTogether()
+        //Overload Plus Operator Tests
+        [TestMethod]
+        public void OperatorOverride_PlusSign_AddTwoListsTogether()
         {
             //Arrange
             MyList<int> testList1 = new MyList<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -173,13 +174,29 @@ namespace UnitTestProject1
             int expected = 6;
 
             //Act
-            MyList<int> resultList = (testList1 + testList2);
+            MyList<int> resultList = testList1 + testList2;
 
             //Assert     
             Assert.AreEqual(expected, resultList[15]);
         }
         //other similair test with different datatypes etc.
 
+        //Overload Minus Operator Tests
+        [TestMethod]
+        public void OperatorOverride_MinusSign_SubtractListAnotherList()
+        {
+            //Arrange
+            MyList<int> testList1 = new MyList<int>() { 0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10 };
+            MyList<int> testList2 = new MyList<int>() { 1, 3, 4, 5 };
+            int expected = 8;
+
+            //Act
+            MyList<int> resultList = testList1 - testList2;
+
+            //Assert     
+            Assert.AreEqual(expected, resultList[4]);
+        }
+        //other similair test with different datatypes etc.
 
 
 
