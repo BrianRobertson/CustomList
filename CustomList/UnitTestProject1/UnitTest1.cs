@@ -139,10 +139,10 @@ namespace UnitTestProject1
         {
             //Arrange
             MyList<int> testList = new MyList<int>() {1, 2, 3, 4, 5, 6};
-            string expected = "123456";// single int? whole list? new data type list? What is expected return?
+            string expected = "123456";
 
             //Act
-            string result = testList.ToString();//how to string entire list? new list with string data type?
+            string result = testList.ToString();
 
             //Assert
             Assert.AreEqual(expected, result);//Compare strings.
@@ -153,7 +153,7 @@ namespace UnitTestProject1
             //Arrange
             MyList<Guitar> testList = new MyList<Guitar>();
             Guitar guitar1 = new Guitar("Fender", "Jaguar", 1964);
-            string expected = "FenderJaguar1964";//What is expected?
+            string expected = "FenderJaguar1964";
 
             //Act
             testList.Add(guitar1);
@@ -180,6 +180,9 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, resultList[15]);
         }
         //other similair test with different datatypes etc.
+
+
+
 
         //Overload Minus Operator Tests
         [TestMethod]

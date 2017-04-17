@@ -9,14 +9,13 @@ namespace CustomList
 {
     public class MyList<T> : IEnumerable<T>
     {
-        //Class (template) for MyList.
         private int count;
         private int capacity;
         private T[] myArray;
         public int Count { get { return count; } }
         public int Capacity { get { return capacity; } set { capacity = value; } }
 
-        public T this[int i]// This indexer returns or sets the corresponding element from the internal array.
+        public T this[int i]// This indexer returns or sets the corresponding element from the internal array. Thus making the list iterable.
         {
             get
             {
@@ -35,7 +34,8 @@ namespace CustomList
             myArray = new T[capacity];
         }
 
-        public void Add(T item)
+        //Add method
+        public void Add(T item)//Add method.
         {
             if (count >= capacity)// the == operator should suffice, it should never be over.
             {
@@ -59,6 +59,7 @@ namespace CustomList
             }
         }
         
+        //Remove method
         public bool Remove(T item)
         {
             for (int i = 0; i < count; i++)
@@ -81,17 +82,25 @@ namespace CustomList
             myArray[count + 1] = default(T);//Attempting to overwrite the last unused index with a default value. But it doesn't do anything.
         }
 
+        //ToString
+        public override string ToString()
+        {
+            string stringList = "";
+            if (count != 0)
+                for (int i = 0; i < count; i++)
+                    stringList = ConvertValuesToString();
 
-
-
-        //Iterator. Is this the function of the indexer? If so, check!
-
-
-
-        //public override string ToString()
-        //{
-
-        //}
+            return stringList;
+        }
+        private string ConvertValuesToString()
+        {
+            string myString = "";
+            for (int i = 0; i < count; i++)
+            {
+                myString += myArray[i];
+            }
+            return myString;
+        }
 
         //Overload Plus Operator.
         public static MyList<T> operator + (MyList<T> oneArray, MyList<T> twoArray)
@@ -139,12 +148,12 @@ namespace CustomList
                 for (int i = 0; i < oneArray.count; i++)
                 {
                     bool addThis = true;
-                    for (int j = 0; j < valuesToRemoveArray.count; j++)
+                    for (int index = 0; index < valuesToRemoveArray.count; index++)
                     {
-                        if (oneArray[i].Equals(valuesToRemoveArray[j]))
+                        if (oneArray[i].Equals(valuesToRemoveArray[index]))
                         {
                             addThis = false;
-                            j = valuesToRemoveArray.count;
+                            index = valuesToRemoveArray.count;
                         }
                     }
                     if (addThis)
@@ -159,12 +168,45 @@ namespace CustomList
             return resultingSubtractedArray;
         }
 
+        //Zip Method
         public MyList<T> ZipWith(MyList<T> listToBeZippedIn)
         {
-            //needs logic.
-            MyList<T> zippedList = new MyList<T>();
-            return zippedList;
+            MyList<T> zipArray = new MyList<T>();
+
+            if (count != 0 && listToBeZippedIn.Equals(0))
+            {
+                if (count >= listToBeZippedIn.Count)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        zipArray.Add(myArray[i]);
+                        if (i < listToBeZippedIn.Count)
+                            zipArray.Add(listToBeZippedIn[i]);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < listToBeZippedIn.Count; i++)
+                    {
+                        if (i < count)
+                            zipArray.Add(myArray[i]);
+                        zipArray.Add(listToBeZippedIn[i]);
+                    }
+                }
+            }
+            else if (count != 0 && listToBeZippedIn.Equals(0))
+            {
+                for (int i = 0; i < count; i++)
+                    zipArray.Add(myArray[i]);
+            }
+            else if (count == 0 && !listToBeZippedIn.Equals(0))
+            {
+                for (int i = 0; i < listToBeZippedIn.Count; i++)
+                    zipArray.Add(listToBeZippedIn[i]);
+            }
+            return zipArray;
         }
+
         public void Sort()
         {
             //bonus.
