@@ -22,8 +22,8 @@ namespace CustomList
         }
         public void ManageMyList()
         {
-            MyList<int> list = new MyList<int>();
-            list.Add(9);
+//            MyList<int> list = new MyList<int>();
+//            list.Add(9);
 
 
 

@@ -153,10 +153,10 @@ namespace UnitTestProject1
             //Arrange
             MyList<Guitar> testList = new MyList<Guitar>();
             Guitar guitar1 = new Guitar("Fender", "Jaguar", 1964);
+            testList.Add(guitar1);
             string expected = "FenderJaguar1964";
 
             //Act
-            testList.Add(guitar1);
             string result = testList.ToString();//ToString the whole object into one string?
 
             //Assert
@@ -182,8 +182,6 @@ namespace UnitTestProject1
         //other similair test with different datatypes etc.
 
 
-
-
         //Overload Minus Operator Tests
         [TestMethod]
         public void OperatorOverride_MinusSign_SubtractListAnotherList()
@@ -202,16 +200,7 @@ namespace UnitTestProject1
         //other similair test with different datatypes etc.
 
 
-
-
-
-
-
-
-
-
         //Count Tests
-
         [TestMethod]
         public void Count_IntList_Match()
         {

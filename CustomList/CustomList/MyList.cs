@@ -85,12 +85,12 @@ namespace CustomList
         //ToString
         public override string ToString()
         {
-            string stringList = "";
+            string resultString = "";
             if (count != 0)
                 for (int i = 0; i < count; i++)
-                    stringList = ConvertValuesToString();
+                    resultString = ConvertValuesToString();
 
-            return stringList;
+            return resultString;
         }
         private string ConvertValuesToString()
         {
@@ -209,7 +209,7 @@ namespace CustomList
 
         public void Sort()
         {
-            //bonus.
+            //bonus, not done.
         }
 
         public IEnumerator<T> GetEnumerator()
