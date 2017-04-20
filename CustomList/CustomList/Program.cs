@@ -25,8 +25,12 @@ namespace CustomList
             //list.Add(94);
             //list.Add(100);
             //list.Remove(91);
+            MyList<int> testList1 = new MyList<int>() { 0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10 };
+            MyList<int> testList2 = new MyList<int>() { 1, 3, 4, 5 };
+//            int expected = 8;
 
-
+            //Act
+            MyList<int> resultList = testList1 - testList2;
             //Arrange
             //MyList<int> testList = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
             //string expected = "123456";// single int? whole list? new data type list? What is expected return?
@@ -38,17 +42,17 @@ namespace CustomList
             //Assert.AreEqual(expected, result);//Compare strings.
 
             //Arrange
-            MyList<int> oddList1 = new MyList<int>() { 1, 3, 5, 7, 9 };
-            MyList<int> evenList2 = new MyList<int>() { 2, 4, 6, 8, 10 };
-            MyList<int> expectedList = new MyList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            //MyList<int> oddList1 = new MyList<int>() { 1, 3, 5, 7, 9 };
+            //MyList<int> evenList2 = new MyList<int>() { 2, 4, 6, 8, 10 };
+            //MyList<int> expectedList = new MyList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            //Act
-            MyList<int> resultList = oddList1.ZipWith(evenList2);//zipper method.
-            for (int i = 0; i < resultList.Count; i++)
-            {
-                Console.WriteLine(resultList[i]);
-            }
-            Console.Read();
+            ////Act
+            //MyList<int> resultList = oddList1.ZipWith(evenList2);//zipper method.
+            //for (int i = 0; i < resultList.Count; i++)
+            //{
+            //    Console.WriteLine(resultList[i]);
+            //}
+            //Console.Read();
 
 
 

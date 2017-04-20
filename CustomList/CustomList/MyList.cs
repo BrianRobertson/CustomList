@@ -58,7 +58,7 @@ namespace CustomList
                 count++;
             }
         }
-        
+
         //Remove method
         public bool Remove(T item)
         {
@@ -103,7 +103,7 @@ namespace CustomList
         }
 
         //Overload Plus Operator.
-        public static MyList<T> operator + (MyList<T> oneArray, MyList<T> twoArray)
+        public static MyList<T> operator +(MyList<T> oneArray, MyList<T> twoArray)
         {
             MyList<T> combinedArray = new MyList<T>();
 
@@ -121,28 +121,23 @@ namespace CustomList
         }
 
         //Overload Minus Operator.
-        public static MyList<T> operator - (MyList<T> oneArray, MyList<T> twoArray)
+        public static MyList<T> operator -(MyList<T> oneArray, MyList<T> twoArray)
         {
             MyList<T> resultingSubtractedArray = new MyList<T>();
             MyList<T> valuesToRemoveArray = new MyList<T>();
 
-            if (twoArray.count != 0)
+            for (int i = 0; i < twoArray.count; i++)
             {
-                if (oneArray.count != 0)
+                for (int oneArrayIndex = 0; oneArrayIndex < oneArray.count; oneArrayIndex++)
                 {
-                    for (int i = 0; i < twoArray.count; i++)
+                    if (twoArray[i].Equals(oneArray[oneArrayIndex]))
                     {
-                        for (int oneArrayIndex = 0; oneArrayIndex < oneArray.count; oneArrayIndex++)
-                        {
-                            if (twoArray[i].Equals(oneArray[oneArrayIndex]))
-                            {
-                                valuesToRemoveArray.Add(twoArray[i]);
-                                oneArrayIndex = oneArray.count;
-                            }
-                        }
+                        valuesToRemoveArray.Add(twoArray[i]);
+                        oneArrayIndex = oneArray.count;
                     }
                 }
             }
+
             if (oneArray.count != 0 && valuesToRemoveArray.count != 0)
             {
                 for (int i = 0; i < oneArray.count; i++)
